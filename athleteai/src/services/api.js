@@ -1,11 +1,12 @@
 import axios from 'axios'
 
+const BACKEND_URL = 'https://athleteai.onrender.com/api'
+
 const api = axios.create({
-  baseURL: import.meta.env.VITE_API_URL || 'http://127.0.0.1:8000/api',
+  baseURL: BACKEND_URL,
   headers: { 'Content-Type': 'application/json' },
 })
 
-// attach token to every request automatically
 api.interceptors.request.use((config) => {
   const token = localStorage.getItem('token')
   if (token) {
@@ -14,7 +15,6 @@ api.interceptors.request.use((config) => {
   return config
 })
 
-// handle 401 globally
 api.interceptors.response.use(
   (res) => res.data,
   (err) => {
