@@ -1,9 +1,7 @@
 import axios from 'axios'
 
-const BACKEND_URL = 'https://athleteai.onrender.com/api'
-
 const api = axios.create({
-  baseURL: BACKEND_URL,
+  baseURL: 'https://athleteai.onrender.com/api',
   headers: { 'Content-Type': 'application/json' },
 })
 
